@@ -1,5 +1,13 @@
 # BirthPicker Flutter Package
 
+[![pub package](https://img.shields.io/pub/v/birth_picker.svg)](https://pub.dartlang.org/packages/birth_picker)
+[![Score](https://img.shields.io/pub/points/birth_picker?label=Score&logo=dart)](https://pub.dartlang.org/packages/birth_picker/score)
+[![Platform](https://img.shields.io/badge/Platform-Android%20|%20iOS%20|%20macOS%20|%20Windows%20|%20Linux%20-blue.svg?logo=flutter)](https://pub.dartlang.org/packages/birth_picker)
+![GitHub stars](https://img.shields.io/github/stars/intelryzen/birth_picker)
+![GitHub forks](https://img.shields.io/github/forks/intelryzen/birth_picker)
+![GitHub issues](https://img.shields.io/github/issues/intelryzen/birth_picker)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/intelryzen/birth_picker)
+
 A customizable date picker widget for Flutter applications, designed specifically for selecting birth dates. It offers a seamless user experience by supporting platform-specific date pickers (Cupertino for iOS and Material for Android) and customizable UI components.
 
 | **Keyboard Input Example**              | **iOS Date Picker Example**               | **Android Date Picker Example**            |
