@@ -46,9 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             BirthPicker(
-              onChanged: (DateTime? dateTime) {
-                print(dateTime);
-              },
+              onChanged: (DateTime? dateTime) {},
             ),
           ],
         ),
