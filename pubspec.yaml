@@ -1,10 +1,10 @@
 name: birth_picker
 description: "A customizable Flutter widget for selecting birth dates with auto-formatting and platform-specific UI."
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/intelryzen/birth_picker
 
 environment:
-  sdk: ^3.6.0
+  sdk: '>=3.0.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -22,7 +22,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # To add assets to your package, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
