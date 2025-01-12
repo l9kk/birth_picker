@@ -10,20 +10,41 @@ import 'package:birth_picker/birth_picker_util.dart';
 export 'package:intl/date_symbol_data_local.dart';
 
 class BirthPicker extends StatefulWidget {
-  final Color? focusColor;
+  /// Decoration for the widget container (e.g., border, background)
   final BoxDecoration? decoration;
+
+  /// Padding for the entire widget
   final EdgeInsets? padding;
+
+  /// Color of the background when the field is focused
+  final Color? focusColor;
+
+  /// Padding when the field is focused
   final EdgeInsets? focusPadding;
+
+  /// Spacing between the date fields (year, month, day)
   final double spacing;
+
+  /// Text style for the input fields
   final TextStyle? textStyle;
 
-  ///  Locale name (e.g., "en_US")
+  /// Locale for date formatting (e.g., "en_US")
   final String? locale;
 
+  /// Whether the first field should get focus automatically on load
   final bool autofocus;
+
+  /// User-customized icon to display next to the input fields
   final Widget? icon;
+
+  /// Color of the icon
   final Color? iconColor;
+
+  /// Size of the icon
   final double iconSize;
+
+  /// Callback function triggered when the date changes
+  /// Passes null if the dateTime is invalid.
   final void Function(DateTime? dateTime)? onChanged;
 
   const BirthPicker({
