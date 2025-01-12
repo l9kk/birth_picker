@@ -1,3 +1,8 @@
+## 0.0.4
+
+- Incorrect Locale Error Handling
+- Add comments for parameters
+
 ## 0.0.3
 
 - Set minimum Dart SDK version to 3.0.0
