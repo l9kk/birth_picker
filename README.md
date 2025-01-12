@@ -32,13 +32,51 @@ A customizable date picker widget for Flutter applications, designed specificall
     ```bash
     flutter pub get
     ```
+3. Import it:
+    ```dart
+    import 'package:birth_picker/birth_picker.dart';
+    ```
 
 ## Usage
 Before using the `BirthPicker` widget, **initialize date formatting** by calling `initializeDateFormatting()` in your `main` function:
 
 ```dart
+import 'package:birth_picker/birth_picker.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting(); // Important: Initialize date formatting
   runApp(const MyApp());
 }
+```
+
+## Example
+```dart
+import 'package:birth_picker/birth_picker.dart';
+...
+BirthPicker(
+  onChanged: (dateTime) {
+    if (dateTime != null) {
+      print('Selected Date: ${dateTime.toIso8601String()}');
+    } else {
+      print('Invalid Date');
+    }
+  },
+)
+```
+
+## Props
+| **Props**         | **Types**                          | **Default**           | **Description**                                                                                                                                 |
+|-------------------|-----------------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| `decoration`      | `BoxDecoration?`                  |                 | Decoration for the widget container (e.g., border, background).                                                                                  |
+| `padding`         | `EdgeInsets?`                     |    | Padding for the entire widget.                                                                                                                  |
+| `focusColor`      | `Color?`                          |                 | Color of the background when the field is focused.                                                                                               |
+| `focusPadding`    | `EdgeInsets?`                     |                 | Padding when the field is focused                                                                                                    |
+| `spacing`         | `double`                          | `6`                   | Spacing between the date fields (year, month, day).                                                                                              |
+| `textStyle`       | `TextStyle?`                      |                 | Text style for the input fields.                                                                                                                 |
+| `locale`          | `String?`                         |  | Locale for date formatting (e.g., "en_US").                                                                                                      |
+| `autofocus`       | `bool`                            | `false`               | Whether the first field should get focus automatically on load.                                                                                  |
+| `icon`            | `Widget?`                         | | User-customized icon to display next to the input fields.                                                                                        |
+| `iconColor`       | `Color?`                          |                 | Color of the icon.                                                                                                                               |
+| `iconSize`        | `double`                          | `20`                  | Size of the icon.                                                                                                                                |
+| `onChanged`       | `void Function(DateTime?)?` | `null`                | Callback function triggered when the date changes. Passes `null` if the dateTime is invalid.                                                    |
