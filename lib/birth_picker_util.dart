@@ -28,7 +28,7 @@ abstract class BirthPickerUtil {
 
       if (input == "00") {
         correctedValue = "01";
-      } else if (number > 2 && number < 10) {
+      } else if (number > 1 && number < 10) {
         moveNext = true;
         correctedValue = "0$number";
       } else if (number > 12) {
