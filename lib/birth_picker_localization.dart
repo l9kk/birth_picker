@@ -23,7 +23,6 @@ abstract class BirthPickerLocalization {
   };
 
   static List<String> getDateLabels(String locale) {
-    return _dateLabels[locale.split("_").first] ??
-        _dateLabels["en"]!;
+    return _dateLabels[locale.split("_").first] ?? _dateLabels["en"]!;
   }
 }
