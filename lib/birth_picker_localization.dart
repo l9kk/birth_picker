@@ -16,7 +16,7 @@ abstract class BirthPickerLocalization {
     'vi': ['Năm', 'Tháng', 'Ngày'],
     'id': ['Tahun', 'Bulan', 'Hari'],
     'ms': ['Tahun', 'Bulan', 'Hari'],
-    'tr': ['Yıl', 'Ay', 'Gün'], // 터키어
+    'tr': ['Yıl', 'Ay', 'Gün'],
     'pl': ['Rok', 'Miesiąc', 'Dzień'],
     'nl': ['Jaar', 'Maand', 'Dag'],
     'sv': ['År', 'Månad', 'Dag'],

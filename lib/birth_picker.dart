@@ -274,7 +274,6 @@ class _BirthPickerState extends State<BirthPicker> {
                       }
 
                       if (BirthPickerUtil.isInteger(value)) {
-                        // 숫자일 경우 실행할 코드
                         var (correctedValue, moveNext) =
                             BirthPickerUtil.checkDateFormat(fieldType, value);
 
