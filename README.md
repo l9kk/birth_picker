@@ -10,6 +10,8 @@
 
 A customizable date picker widget for Flutter applications, designed specifically for selecting birth dates. It offers a seamless user experience by supporting platform-specific date pickers (Cupertino for iOS and Material for Android) and customizable UI components.
 
+![Simulator Screen Recording - iPhone 16 Pro Max - 2025-01-14 at 04 02 38](https://github.com/user-attachments/assets/d15b5793-3cab-4107-b837-8f9a9ae66427)
+
 | **Keyboard Input Example**              | **iOS Date Picker Example**               | **Android Date Picker Example**            |
 |-----------------------------------------|------------------------------------------|-------------------------------------------|
 | ![screenshot1](https://github.com/user-attachments/assets/b84936e6-8a22-41c1-89a7-db49767244e6) | ![screenshot2](https://github.com/user-attachments/assets/c57173cd-f897-4b0b-a178-798cf345a7ed) | ![Screenshot3](https://github.com/user-attachments/assets/8fe735b7-2309-4207-921e-f29bd7ff1f00) |
@@ -25,7 +27,7 @@ A customizable date picker widget for Flutter applications, designed specificall
 ## Installation
 1. Add the following line to your `pubspec.yaml` under `dependencies`:
     ```yaml
-    birth_picker: ^0.0.2
+    birth_picker: ^0.0.6
     ```
 2. Run the following command to install the package:
 
@@ -36,7 +38,7 @@ A customizable date picker widget for Flutter applications, designed specificall
     ```dart
     import 'package:birth_picker/birth_picker.dart';
     ```
-
+    
 ## Usage
 Before using the `BirthPicker` widget, **initialize date formatting** by calling `initializeDateFormatting()` in your `main` function:
 
@@ -48,21 +50,6 @@ void main() async {
   await initializeDateFormatting(); // Important: Initialize date formatting
   runApp(const MyApp());
 }
-```
-
-## Example
-```dart
-import 'package:birth_picker/birth_picker.dart';
-...
-BirthPicker(
-  onChanged: (dateTime) {
-    if (dateTime != null) {
-      print('Selected Date: ${dateTime.toIso8601String()}');
-    } else {
-      print('Invalid Date');
-    }
-  },
-)
 ```
 
 ## Props
@@ -80,3 +67,18 @@ BirthPicker(
 | `iconColor`       | `Color?`                          |                 | Color of the icon.                                                                                                                               |
 | `iconSize`        | `double`                          | `20`                  | Size of the icon.                                                                                                                                |
 | `onChanged`       | `void Function(DateTime?)?` | `null`                | Callback function triggered when the date changes. Passes `null` if the dateTime is invalid.                                                    |
+
+## Example
+```dart
+import 'package:birth_picker/birth_picker.dart';
+...
+BirthPicker(
+  onChanged: (dateTime) {
+    if (dateTime != null) {
+      print('Selected Date: ${dateTime.toIso8601String()}');
+    } else {
+      print('Invalid Date');
+    }
+  },
+)
+```
