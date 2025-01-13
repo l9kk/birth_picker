@@ -10,7 +10,7 @@
 
 A customizable date picker widget for Flutter applications, designed specifically for selecting birth dates. It offers a seamless user experience by supporting platform-specific date pickers (Cupertino for iOS and Material for Android) and customizable UI components.
 
-![Simulator Screen Recording](https://github.com/user-attachments/assets/52372b85-22f4-4ccd-adb4-a8b3c0ea2992)
+![Simulator Screen Recording](https://github.com/user-attachments/assets/e21bdd3d-44ce-4a98-bac6-bfa182cf3dfb)
 
 | **Keyboard Input Example**              | **iOS Date Picker Example**               | **Android Date Picker Example**            |
 |-----------------------------------------|------------------------------------------|-------------------------------------------|
