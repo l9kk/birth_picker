@@ -2,9 +2,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
-
-import 'package:birth_picker/birth_picker_localization.dart';
 import 'package:birth_picker/birth_picker_util.dart';
 
 export 'package:intl/date_symbol_data_local.dart';
@@ -21,9 +18,6 @@ class BirthPicker extends StatefulWidget {
 
   /// Padding when the field is focused
   final EdgeInsets? focusPadding;
-
-  /// Spacing between the date fields (year, month, day)
-  final double spacing;
 
   /// Text style for the input fields
   final TextStyle? textStyle;
@@ -59,7 +53,6 @@ class BirthPicker extends StatefulWidget {
     this.icon,
     this.iconColor,
     this.iconSize = 20,
-    this.spacing = 6,
     this.autofocus = false,
   });
 
@@ -68,64 +61,39 @@ class BirthPicker extends StatefulWidget {
 }
 
 class _BirthPickerState extends State<BirthPicker> {
-  List<String> fieldOrder = ["year", "month", "day"];
-
-  late Map<String, String> hintTexts;
+  late Map<String, String> labels;
+  late List<String> dateSeparator;
+  late List<String> fieldOrder;
 
   final Map<String, TextEditingController> controllers = {
     'year': TextEditingController(),
     'month': TextEditingController(),
     'day': TextEditingController(),
   };
-
   final Map<String, FocusNode> focusNodes = {
     'year': FocusNode(),
     'month': FocusNode(),
     'day': FocusNode(),
   };
+  final keyboardEventFocusNode = FocusNode();
 
   final Map<String, String> fieldTexts = {'year': '', 'month': '', 'day': ''};
 
-  final keyboardEventFocusNode = FocusNode();
   DateTime? currentDate;
 
   @override
   void initState() {
     super.initState();
-    hintTexts = getLocalizedDateUnits(widget.locale ?? Platform.localeName);
-    _setFieldOrder();
+    _initializePickerSettings();
     _addFocusListeners();
     _addControllerListeners();
   }
 
-  Map<String, String> getLocalizedDateUnits(String locale) {
-    List<String> dateFormat = BirthPickerLocalization.getDateFormat(locale);
-
-    return {
-      'year': dateFormat[0],
-      'month': dateFormat[1],
-      'day': dateFormat[2],
-    };
-  }
-
-  void _setFieldOrder() {
-    try {
-      String? pattern =
-          DateFormat.yMd(widget.locale ?? Platform.localeName).pattern;
-      if (pattern != null) {
-        fieldOrder = _extractFieldOrder(pattern);
-      }
-    } catch (_) {}
-  }
-
-  List<String> _extractFieldOrder(String pattern) {
-    List<MapEntry<String, int>> fieldsWithPosition = [
-      MapEntry('year', pattern.indexOf('y')),
-      MapEntry('month', pattern.indexOf('M')),
-      MapEntry('day', pattern.indexOf('d')),
-    ]..sort((a, b) => a.value.compareTo(b.value));
-
-    return fieldsWithPosition.map((entry) => entry.key).toList();
+  void _initializePickerSettings() {
+    final locale = widget.locale ?? Platform.localeName;
+    labels = BirthPickerUtil.getLocalizedDateLabels(locale);
+    dateSeparator = BirthPickerUtil.getDateSeparator(locale);
+    fieldOrder = BirthPickerUtil.getDateOrder(locale);
   }
 
   void _addFocusListeners() {
@@ -210,10 +178,11 @@ class _BirthPickerState extends State<BirthPicker> {
   Widget _buildField(BuildContext context, String fieldType) {
     final controller = controllers[fieldType]!;
     final focusNode = focusNodes[fieldType]!;
-    final hintText = hintTexts[fieldType]!;
+    final label = labels[fieldType]!;
     final maxLength = (fieldType == 'year') ? 4 : 2;
     final defaultTextStyle = widget.textStyle ?? TextStyle(fontSize: 16);
     final text = fieldTexts[fieldType]!;
+    final order = fieldOrder.indexOf(fieldType);
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -235,12 +204,12 @@ class _BirthPickerState extends State<BirthPicker> {
                         : null,
                   ),
                   child: Text(
-                    text.isEmpty ? hintText : text.padLeft(maxLength, '0'),
+                    text.isEmpty ? label : text.padLeft(maxLength, '0'),
                     style: defaultTextStyle,
                   ),
                 ),
                 Text(
-                  ".",
+                  dateSeparator[order],
                   style: defaultTextStyle,
                 ),
               ],
@@ -333,7 +302,6 @@ class _BirthPickerState extends State<BirthPicker> {
               children: [
                 Expanded(
                   child: Row(
-                    spacing: widget.spacing,
                     children: fieldOrder
                         .map((field) => _buildField(context, field))
                         .toList(),

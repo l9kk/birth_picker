@@ -1,3 +1,6 @@
+import 'package:birth_picker/birth_picker_localization.dart';
+import 'package:intl/intl.dart';
+
 abstract class BirthPickerUtil {
   static bool isInteger(String value) {
     if (value.isEmpty) return false;
@@ -48,5 +51,46 @@ abstract class BirthPickerUtil {
     }
 
     return (correctedValue, moveNext);
+  }
+
+  static List<String> getDateSeparator(String locale) {
+    try {
+      final dateFormat = DateFormat.yMd(locale);
+      final formattedDate = dateFormat.format(DateTime(2000, 1, 1));
+      final separator = formattedDate.replaceAll(RegExp(r'[0-9]'), '').trim();
+      switch (separator) {
+        case "..":
+          return [".", ".", ""];
+        case "--":
+          return ["-", "-", ""];
+        case ". . .":
+          return [". ", ". ", "."];
+        case "//":
+        default:
+          return ["/", "/", ""];
+      }
+    } catch (_) {}
+    return ["/", "/", ""];
+  }
+
+  static List<String> getDateOrder(String locale) {
+    try {
+      String? pattern = DateFormat.yMd(locale).pattern;
+      if (pattern != null) {
+        List<MapEntry<String, int>> position = [
+          MapEntry('year', pattern.indexOf('y')),
+          MapEntry('month', pattern.indexOf('M')),
+          MapEntry('day', pattern.indexOf('d')),
+        ]..sort((a, b) => a.value.compareTo(b.value));
+
+        return position.map((entry) => entry.key).toList();
+      }
+    } catch (_) {}
+    return ["year", "month", "day"];
+  }
+
+  static Map<String, String> getLocalizedDateLabels(String locale) {
+    List<String> labels = BirthPickerLocalization.getDateLabels(locale);
+    return {'year': labels[0], 'month': labels[1], 'day': labels[2]};
   }
 }

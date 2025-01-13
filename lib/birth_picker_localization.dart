@@ -1,5 +1,5 @@
 abstract class BirthPickerLocalization {
-  static const Map<String, List<String>> localizedDateFormat = {
+  static const Map<String, List<String>> _dateLabels = {
     'en': ['YYYY', 'MM', 'DD'],
     'ja': ['年', '月', '日'],
     'zh': ['年', '月', '日'],
@@ -22,8 +22,8 @@ abstract class BirthPickerLocalization {
     'sv': ['År', 'Månad', 'Dag'],
   };
 
-  static List<String> getDateFormat(String locale) {
-    return localizedDateFormat[locale.split("_").first] ??
-        localizedDateFormat["en"]!;
+  static List<String> getDateLabels(String locale) {
+    return _dateLabels[locale.split("_").first] ??
+        _dateLabels["en"]!;
   }
 }
