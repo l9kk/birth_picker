@@ -1,3 +1,8 @@
+## 1.0.0
+
+- Add auto-formatting for date separators
+- Remove deprecated `spacing` parameter
+
 ## 0.0.6
 
 - Fix formatting
