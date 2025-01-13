@@ -14,7 +14,7 @@ A customizable date picker widget for Flutter applications, designed specificall
 
 | **Keyboard Input Example**              | **iOS Date Picker Example**               | **Android Date Picker Example**            |
 |-----------------------------------------|------------------------------------------|-------------------------------------------|
-| ![screenshot1](https://github.com/user-attachments/assets/b84936e6-8a22-41c1-89a7-db49767244e6) | ![screenshot2](https://github.com/user-attachments/assets/c57173cd-f897-4b0b-a178-798cf345a7ed) | ![Screenshot3](https://github.com/user-attachments/assets/8fe735b7-2309-4207-921e-f29bd7ff1f00) |
+| ![s1](https://github.com/user-attachments/assets/f98e0e18-d99c-4521-bb93-fde46a233b0a) | ![s2](https://github.com/user-attachments/assets/d43ec6d9-202c-4a16-82fc-c076b6ceee00) | ![Screenshot3](https://github.com/user-attachments/assets/8fe735b7-2309-4207-921e-f29bd7ff1f00) |
 
 ## Features
 - Supports both **iOS-style** (Cupertino) and **Android-style** (Material) date pickers.
@@ -27,7 +27,7 @@ A customizable date picker widget for Flutter applications, designed specificall
 ## Installation
 1. Add the following line to your `pubspec.yaml` under `dependencies`:
     ```yaml
-    birth_picker: ^0.0.6
+    birth_picker: ^1.0.0
     ```
 2. Run the following command to install the package:
 
@@ -59,7 +59,6 @@ void main() async {
 | `padding`         | `EdgeInsets?`                     |    | Padding for the entire widget.                                                                                                                  |
 | `focusColor`      | `Color?`                          |                 | Color of the background when the field is focused.                                                                                               |
 | `focusPadding`    | `EdgeInsets?`                     |                 | Padding when the field is focused                                                                                                    |
-| `spacing`         | `double`                          | `6`                   | Spacing between the date fields (year, month, day).                                                                                              |
 | `textStyle`       | `TextStyle?`                      |                 | Text style for the input fields.                                                                                                                 |
 | `locale`          | `String?`                         |  | Locale for date formatting (e.g., "en_US").                                                                                                      |
 | `autofocus`       | `bool`                            | `false`               | Whether the first field should get focus automatically on load.                                                                                  |
