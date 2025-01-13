@@ -1,3 +1,7 @@
+## 1.0.0+1
+
+- Formatted code
+
 ## 1.0.0
 
 - Add auto-formatting for date separators
