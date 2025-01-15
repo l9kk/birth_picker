@@ -81,3 +81,9 @@ BirthPicker(
   },
 )
 ```
+
+---
+## Contributions
+Contributions are welcome! Please open **[issues](https://github.com/intelryzen/birth_picker/issues)** and **[pull requests](https://github.com/intelryzen/birth_picker/pulls)** to improve this package.
+
+---
