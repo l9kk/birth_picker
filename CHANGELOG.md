@@ -1,3 +1,7 @@
+## 1.1.0
+
+- Add support for Web
+
 ## 1.0.0+1
 
 - Formatted code
