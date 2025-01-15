@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:birth_picker/birth_picker_util.dart';
@@ -340,7 +341,7 @@ class _BirthPickerState extends State<BirthPicker> {
     DateTime firstDate = DateTime(1, 1, 1);
     DateTime lastDate = DateTime(9999, 12, 31);
 
-    if (Platform.isIOS) {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
       await _showDialog(
         CupertinoDatePicker(
           mode: CupertinoDatePickerMode.date,
