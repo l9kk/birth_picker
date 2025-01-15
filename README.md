@@ -27,7 +27,7 @@ A customizable date picker widget for Flutter applications, designed specificall
 ## Installation
 1. Add the following line to your `pubspec.yaml` under `dependencies`:
     ```yaml
-    birth_picker: ^1.0.0
+    birth_picker: ^1.1.0
     ```
 2. Run the following command to install the package:
 
@@ -40,7 +40,7 @@ A customizable date picker widget for Flutter applications, designed specificall
     ```
     
 ## Usage
-Before using the `BirthPicker` widget, **initialize date formatting** by calling `initializeDateFormatting()` in your `main` function:
+Before using the `BirthPicker` widget, **initialize date formatting** by calling `initializeDateFormatting()` in your `main` function, as it depends on the **[`intl` package](https://pub.dev/packages/intl)** for handling localized date formats:
 
 ```dart
 import 'package:birth_picker/birth_picker.dart';
