@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -90,7 +89,8 @@ class _BirthPickerState extends State<BirthPicker> {
   }
 
   void _initializePickerSettings() {
-    final locale = widget.locale ?? Platform.localeName;
+    final locale = widget.locale ??
+        WidgetsBinding.instance.platformDispatcher.locale.toString();
     labels = BirthPickerUtil.getLocalizedDateLabels(locale);
     dateSeparator = BirthPickerUtil.getDateSeparator(locale);
     fieldOrder = BirthPickerUtil.getDateOrder(locale);
