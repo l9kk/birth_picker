@@ -40,7 +40,7 @@ A customizable date picker widget for Flutter applications, designed specificall
     ```
     
 ## Usage
-Before using the `BirthPicker` widget, **initialize date formatting** by calling `initializeDateFormatting()` in your `main` function, as it depends on the **[`intl` package](https://pub.dev/packages/intl)** for handling localized date formats:
+Before using the `BirthPicker` widget, **initialize date formatting** by calling `initializeDateFormatting()` in your `main` function, as it depends on the **[intl](https://pub.dev/packages/intl)** package for handling localized date formats:
 
 ```dart
 import 'package:birth_picker/birth_picker.dart';
