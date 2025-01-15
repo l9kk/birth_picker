@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Set `intl` version range to `>=0.18.0 <0.21.0` to ensure compatibility with various versions.
+
 ## 1.1.0
 
 - Add support for Web

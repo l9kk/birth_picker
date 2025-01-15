@@ -27,7 +27,7 @@ A customizable date picker widget for Flutter applications, designed specificall
 ## Installation
 1. Add the following line to your `pubspec.yaml` under `dependencies`:
     ```yaml
-    birth_picker: ^1.1.0
+    birth_picker: ^1.1.1
     ```
 2. Run the following command to install the package:
 
