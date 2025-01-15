@@ -10,11 +10,11 @@
 
 A customizable date picker widget for Flutter applications, designed specifically for selecting birth dates. It offers a seamless user experience by supporting platform-specific date pickers (Cupertino for iOS and Material for Android) and customizable UI components.
 
-![Simulator Screen Recording](https://github.com/user-attachments/assets/e21bdd3d-44ce-4a98-bac6-bfa182cf3dfb)
+![Simulator Screen Recording](https://github.com/intelryzen/birth_picker/blob/main/screenshots/demo.gif?raw=true)
 
 | **Keyboard Input Example**              | **iOS Date Picker Example**               | **Android Date Picker Example**            |
 |-----------------------------------------|------------------------------------------|-------------------------------------------|
-| ![s1](https://github.com/user-attachments/assets/f98e0e18-d99c-4521-bb93-fde46a233b0a) | ![s2](https://github.com/user-attachments/assets/d43ec6d9-202c-4a16-82fc-c076b6ceee00) | ![Screenshot3](https://github.com/user-attachments/assets/8fe735b7-2309-4207-921e-f29bd7ff1f00) |
+| ![s1](https://github.com/intelryzen/birth_picker/blob/main/screenshots/keyboard-example.png?raw=true) | ![s2](https://github.com/intelryzen/birth_picker/blob/main/screenshots/ios-example.png?raw=true) | ![Screenshot3](https://github.com/intelryzen/birth_picker/blob/main/screenshots/android-example.png?raw=true) |
 
 ## Features
 - Supports both **iOS-style** (Cupertino) and **Android-style** (Material) date pickers.
