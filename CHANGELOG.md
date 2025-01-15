@@ -1,3 +1,7 @@
+## 1.1.1+1
+
+- Update docs.
+
 ## 1.1.1
 
 - Set `intl` version range to `>=0.18.0 <0.21.0` to ensure compatibility with various versions.
