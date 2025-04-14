@@ -37,6 +37,15 @@ class BirthPicker extends StatefulWidget {
   /// Size of the icon
   final double iconSize;
 
+  /// Initial date to display in the picker fields
+  final DateTime? initialDate;
+
+  /// Minimum selectable date
+  final DateTime? minimumDate;
+
+  /// Maximum selectable date
+  final DateTime? maximumDate;
+
   /// Callback function triggered when the date changes
   /// Passes null if the dateTime is invalid.
   final void Function(DateTime? dateTime)? onChanged;
@@ -53,6 +62,9 @@ class BirthPicker extends StatefulWidget {
     this.icon,
     this.iconColor,
     this.iconSize = 20,
+    this.initialDate,
+    this.minimumDate,
+    this.maximumDate,
     this.autofocus = false,
   });
 
@@ -87,6 +99,9 @@ class _BirthPickerState extends State<BirthPicker> {
     _initializePickerSettings();
     _addFocusListeners();
     _addControllerListeners();
+    if (widget.initialDate != null) {
+      _setSelectedDate(widget.initialDate!);
+    }
   }
 
   void _initializePickerSettings() {
@@ -337,9 +352,17 @@ class _BirthPickerState extends State<BirthPicker> {
   }
 
   Future<DateTime?> _showPlatformDatePicker(BuildContext context) async {
-    DateTime initialDate = _getDate() ?? DateTime.now();
-    DateTime firstDate = DateTime(1, 1, 1);
-    DateTime lastDate = DateTime(9999, 12, 31);
+    DateTime initialDate = _getDate() ?? widget.initialDate ?? DateTime.now();
+    DateTime firstDate = widget.minimumDate ?? DateTime(1, 1, 1);
+    DateTime lastDate = widget.maximumDate ?? DateTime(9999, 12, 31);
+
+    // 최소/최대 날짜로 클램핑
+    if (initialDate.isBefore(firstDate)) {
+      initialDate = firstDate;
+    }
+    if (initialDate.isAfter(lastDate)) {
+      initialDate = lastDate;
+    }
 
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       await _showDialog(
