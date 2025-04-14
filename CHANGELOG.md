@@ -1,3 +1,7 @@
+## 1.1.2+1
+
+- Hotfix onChanged
+
 ## 1.1.2
 
 - Support initialDate, minimumDate, and maximumDate parameters.
