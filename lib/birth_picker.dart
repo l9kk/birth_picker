@@ -152,6 +152,18 @@ class _BirthPickerState extends State<BirthPicker> {
 
           if (currentDate != date) {
             currentDate = date;
+
+            if (date != null) {
+              if (widget.minimumDate != null &&
+                  date.isBefore(widget.minimumDate!)) {
+                return widget.onChanged!.call(null);
+              }
+              if (widget.maximumDate != null &&
+                  date.isAfter(widget.maximumDate!)) {
+                return widget.onChanged!.call(null);
+              }
+            }
+
             widget.onChanged!.call(date);
           }
         }
