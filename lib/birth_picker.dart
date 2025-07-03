@@ -97,6 +97,7 @@ class _BirthPickerState extends State<BirthPicker> {
   final Map<String, String> fieldTexts = {'year': '', 'month': '', 'day': ''};
 
   DateTime? currentDate;
+  bool _isPopupOpen = false;
 
   @override
   void initState() {
@@ -303,6 +304,7 @@ class _BirthPickerState extends State<BirthPicker> {
   @override
   Widget build(BuildContext context) {
     final isAnyFieldFocused = focusNodes.values.any((node) => node.hasFocus);
+    final isFocused = isAnyFieldFocused || _isPopupOpen;
 
     return TapRegion(
       onTapOutside: (_) => keyboardEventFocusNode.unfocus(),
@@ -317,7 +319,7 @@ class _BirthPickerState extends State<BirthPicker> {
             }
           },
           child: Container(
-            decoration: widget.decorationBuilder?.call(isAnyFieldFocused) ??
+            decoration: widget.decorationBuilder?.call(isFocused) ??
                 BoxDecoration(
                   border: Border.all(
                       color: Theme.of(context).brightness == Brightness.dark
@@ -383,25 +385,37 @@ class _BirthPickerState extends State<BirthPicker> {
       initialDate = lastDate;
     }
 
-    if (defaultTargetPlatform == TargetPlatform.iOS) {
-      await _showDialog(
-        CupertinoDatePicker(
-          mode: CupertinoDatePickerMode.date,
-          initialDateTime: initialDate,
-          minimumDate: firstDate,
-          maximumDate: lastDate,
-          onDateTimeChanged: (DateTime date) {
-            _setSelectedDate(date);
-          },
-        ),
-      );
-    } else {
-      return await showDatePicker(
-        context: context,
-        initialDate: initialDate,
-        firstDate: firstDate,
-        lastDate: lastDate,
-      );
+    setState(() {
+      _isPopupOpen = true;
+    });
+
+    try {
+      if (defaultTargetPlatform == TargetPlatform.iOS) {
+        await _showDialog(
+          CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.date,
+            initialDateTime: initialDate,
+            minimumDate: firstDate,
+            maximumDate: lastDate,
+            onDateTimeChanged: (DateTime date) {
+              _setSelectedDate(date);
+            },
+          ),
+        );
+      } else {
+        return await showDatePicker(
+          context: context,
+          initialDate: initialDate,
+          firstDate: firstDate,
+          lastDate: lastDate,
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isPopupOpen = false;
+        });
+      }
     }
     return null;
   }

@@ -1,3 +1,7 @@
+## 1.2.0
+
+- replaced `decoration` parameter with `decorationBuilder`.
+
 ## 1.1.3
 
 - unfocusOnFinish parameter added.
