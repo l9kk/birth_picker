@@ -28,6 +28,9 @@ class BirthPicker extends StatefulWidget {
   /// Whether the first field should get focus automatically on load
   final bool autofocus;
 
+  /// Whether to unfocus the input fields when all fields are filled
+  final bool unfocusOnFinish;
+
   /// User-customized icon to display next to the input fields
   final Widget? icon;
 
@@ -66,6 +69,7 @@ class BirthPicker extends StatefulWidget {
     this.minimumDate,
     this.maximumDate,
     this.autofocus = false,
+    this.unfocusOnFinish = true,
   });
 
   @override
@@ -432,7 +436,9 @@ class _BirthPickerState extends State<BirthPicker> {
     if (currentIndex < fieldOrder.length - 1) {
       _requestFocus(fieldOrder[currentIndex + 1]);
     } else {
-      focusNodes[currentField]!.unfocus();
+      if (widget.unfocusOnFinish) {
+        focusNodes[currentField]!.unfocus();
+      }
     }
   }
 

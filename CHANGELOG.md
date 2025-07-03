@@ -1,3 +1,7 @@
+## 1.1.3
+
+- unfocusOnFinish parameter added.
+
 ## 1.1.2+1
 
 - Hotfix onChanged
