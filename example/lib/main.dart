@@ -46,7 +46,18 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             BirthPicker(
-              onChanged: (DateTime? dateTime) {},
+              decorationBuilder: (bool isFocused) {
+                return BoxDecoration(
+                  border: Border.all(
+                    color: isFocused ? Colors.blue : Colors.grey,
+                    width: isFocused ? 2.0 : 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                );
+              },
+              onChanged: (DateTime? dateTime) {
+                print('$dateTime');
+              },
             ),
           ],
         ),

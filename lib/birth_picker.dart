@@ -7,8 +7,9 @@ import 'package:birth_picker/birth_picker_util.dart';
 export 'package:intl/date_symbol_data_local.dart';
 
 class BirthPicker extends StatefulWidget {
-  /// Decoration for the widget container (e.g., border, background)
-  final BoxDecoration? decoration;
+  /// Builder function for the widget container decoration
+  /// Receives a boolean parameter indicating focus state
+  final BoxDecoration? Function(bool isFocused)? decorationBuilder;
 
   /// Padding for the entire widget
   final EdgeInsets? padding;
@@ -56,7 +57,7 @@ class BirthPicker extends StatefulWidget {
   const BirthPicker({
     super.key,
     this.onChanged,
-    this.decoration,
+    this.decorationBuilder,
     this.padding,
     this.focusColor,
     this.focusPadding,
@@ -301,6 +302,8 @@ class _BirthPickerState extends State<BirthPicker> {
 
   @override
   Widget build(BuildContext context) {
+    final isAnyFieldFocused = focusNodes.values.any((node) => node.hasFocus);
+
     return TapRegion(
       onTapOutside: (_) => keyboardEventFocusNode.unfocus(),
       child: GestureDetector(
@@ -314,7 +317,7 @@ class _BirthPickerState extends State<BirthPicker> {
             }
           },
           child: Container(
-            decoration: widget.decoration ??
+            decoration: widget.decorationBuilder?.call(isAnyFieldFocused) ??
                 BoxDecoration(
                   border: Border.all(
                       color: Theme.of(context).brightness == Brightness.dark
