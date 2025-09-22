@@ -7,7 +7,7 @@ abstract class BirthPickerLocalization {
     'fr': ['Année', 'Mois', 'Jour'],
     'de': ['Jahr', 'Monat', 'Tag'],
     'es': ['Año', 'Mes', 'Día'],
-    'ru': ['Год', 'Месяц', 'День'],
+    'ru': ['ГГГГ', 'ММ', 'ДД'],
     'ar': ['السنة', 'الشهر', 'اليوم'],
     'pt': ['Ano', 'Mês', 'Dia'],
     'it': ['Anno', 'Mese', 'Giorno'],
