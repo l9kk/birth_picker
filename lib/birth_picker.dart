@@ -325,7 +325,7 @@ class _BirthPickerState extends State<BirthPicker> {
                       color: Theme.of(context).brightness == Brightness.dark
                           ? const Color(0xFF777777)
                           : const Color(0xFFDFDFDF)),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(16),
                 ),
             padding: widget.padding ??
                 const EdgeInsets.only(
