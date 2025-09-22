@@ -58,19 +58,7 @@ abstract class BirthPickerUtil {
   }
 
   static List<String> getDateOrder(String locale) {
-    try {
-      String? pattern = DateFormat.yMd(locale).pattern;
-      if (pattern != null) {
-        List<MapEntry<String, int>> position = [
-          MapEntry('year', pattern.indexOf('y')),
-          MapEntry('month', pattern.indexOf('M')),
-          MapEntry('day', pattern.indexOf('d')),
-        ]..sort((a, b) => a.value.compareTo(b.value));
-
-        return position.map((entry) => entry.key).toList();
-      }
-    } catch (_) {}
-    return ["year", "month", "day"];
+    return ["day", "month", "year"];
   }
 
   static Map<String, String> getLocalizedDateLabels(String locale) {
