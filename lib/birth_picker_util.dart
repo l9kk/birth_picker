@@ -54,22 +54,6 @@ abstract class BirthPickerUtil {
   }
 
   static List<String> getDateSeparator(String locale) {
-    try {
-      final dateFormat = DateFormat.yMd(locale);
-      final formattedDate = dateFormat.format(DateTime(2000, 1, 1));
-      final separator = formattedDate.replaceAll(RegExp(r'[0-9]'), '').trim();
-      switch (separator) {
-        case "..":
-          return [".", ".", ""];
-        case "--":
-          return ["-", "-", ""];
-        case ". . .":
-          return [". ", ". ", "."];
-        case "//":
-        default:
-          return ["/", "/", ""];
-      }
-    } catch (_) {}
     return ["/", "/", ""];
   }
 
